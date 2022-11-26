@@ -1,10 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage("build") {
+        stage("build jar") {
             steps {
                 script {
                     echo "building the application..."
+                    sh 'mvn package'
                 }
             }
         }
