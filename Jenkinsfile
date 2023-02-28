@@ -17,5 +17,13 @@ pipeline {
                 }
             }
         }
+        stage("configure ec2 instances with ansible playbook") {
+            steps {
+                script {
+                    echo "calling ansible to configure ec2 instances"
+                    
+                }
+            }
+        }
     }   
 }
