@@ -20,8 +20,18 @@ pipeline {
         stage("configure ec2 instances with ansible playbook") {
             steps {
                 script {
+                    // need to have jenkins invoke command on the ansible controller server
                     echo "calling ansible to configure ec2 instances"
-                    
+                    def remote = [:]
+                    remote.name = "ansible-server"
+                    remote.host = "206.81.7.158"
+                    remote.allowAnyHosts = true
+
+                    withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]) {
+                        remote.user = user
+                        remote.identityFile = keyfile
+                        sshCommand remote: remote, command: "ls -l"
+                    }
                 }
             }
         }
