@@ -7,3 +7,5 @@ docker run \
         -v jenkins_home:/var/jenkins_home \
         -v /var/run/docker.sock:/var/run/docker.sock \
         jenkins-with-docker:latest
+# u/n: robert
+# p/w: S3
