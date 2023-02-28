@@ -30,6 +30,7 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]) {
                         remote.user = user
                         remote.identityFile = keyfile
+                        // sshCommand comes from the jenkins plugin called "ssh pipeline steps"
                         sshCommand remote: remote, command: "ls -l"
                     }
                 }
